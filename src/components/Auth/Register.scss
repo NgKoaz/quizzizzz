@@ -1,0 +1,94 @@
+.register-content {
+    display: flex;
+    justify-content: center;
+
+    .register-form {
+        padding: 25px 60px;
+        display: flex;
+        flex-direction: column;
+        width: 25%;
+        min-width: 400px;
+        max-width: 500px;
+
+        .form-group-custom {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+    
+            label {
+                margin-top: 5px
+            }
+    
+            h1 {
+                font-size: 40px;
+                text-align: center;
+            }
+    
+            p {
+                font-size: 20px;
+                text-align: center;
+            }
+    
+            #email-input,
+            #username-input,
+            #password-input, 
+            #confirm-password-input {
+                border: 1px solid #ccc;
+                padding: 10px 12px;
+                border-radius: 4px;
+                outline: none;
+                /* Remove the default outline */
+                transition: box-shadow 0.3s ease;
+                /* Smooth transition for the focus effect */
+    
+                &:focus {
+                    box-shadow: 0 0 8px rgba(0, 123, 255, 0.7);
+                    /* Blue light blur effect */
+                    border-color: #007bff;
+                    /* Optional: change border color to match the blue light */
+                }
+            }
+    
+            .password-form {
+                position: relative;
+                width: 100%;
+    
+                input {
+                    width: 100%;
+                }
+    
+                span {
+                    position: absolute;
+                    font-size: 18px;
+                    color: #5d5d5d;
+                    width: 20px;
+                    top: 0;
+                    right: 10px;
+                }
+            }
+    
+    
+            span {
+                margin-top: 8px;
+    
+                a {
+                    font-size: 14px;
+                    font-weight: 450;
+                    color: rgb(147, 147, 147);
+                }
+            }
+    
+            button {
+                margin-top: 16px;
+                font-size: 16px;
+                border: none;
+                border-radius: 3px;
+                color: white;
+                background: black;
+                font-weight: 500;
+                padding: 8px 0px;
+            }
+    
+        }
+    }
+}

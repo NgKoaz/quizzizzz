@@ -1,0 +1,49 @@
+.user-management-content {
+    overflow-y: scroll;
+    padding: 15px 15px 15px 15px;
+    height: calc(100vh - 50px)
+}
+
+.create-btn {
+    margin: 15px 0px;
+    background: rgb(0, 128, 255);
+    color: whitesmoke;
+    border-radius: 6px;
+    outline: none;
+    border: 2px solid rgb(0, 128, 255);
+    transition: background 0.5s ease-out;
+
+    &:hover {
+        background: rgb(255, 171, 16);
+    }
+}
+
+.img-in-table {
+    height: 150px;
+}
+
+.button-list {
+    display: flex;
+    gap: 6px;
+}
+
+
+.icon-container {
+    display: flex;
+    align-items: center;
+    padding: 4px 8px;
+    /* Adjust padding as needed */
+
+    .icon {
+        margin-right: 8px;
+        /* Space between icon and text */
+        font-size: 22px;
+        /* Adjust size of the icon */
+    }
+
+    .text {
+        font-size: 20px;
+        /* Adjust size of the text */
+        /* Additional text styling here */
+    }
+}

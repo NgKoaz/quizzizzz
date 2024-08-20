@@ -1,0 +1,96 @@
+.doing-quiz-page {
+    padding-top: 25px;
+    padding-bottom: 25px;
+    overflow-y:scroll;
+    height: calc(100vh - 50px);
+
+    .question-area {
+        position: relative;
+        border-radius: 10px;
+        border: 2px solid #ccc;
+        min-height: 500px;
+        min-width: 457px;
+        max-width: 900px;
+        padding: 10px 15px;
+        
+        .question-title {
+            border-bottom: 1px solid #ccc;
+            padding: 10px 0px;
+        }
+
+        .button-container {
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 15px;
+        }
+
+        .image-container {
+            margin-top: 30px;
+        }
+
+        .question-container {
+            margin-top: 20px;
+        }
+    }
+
+    .control-area {
+        border-radius: 10px;
+        border: 2px solid #ccc;
+        min-height: 500px;
+        min-width: 196px;
+        max-width: 386px;
+
+        .timer {
+            font-size: 24px;    
+            font-weight: 600;
+            border-bottom: 1px solid #ccc;
+            padding: 20px 0px;
+            text-align: center;
+        }
+
+        .question-panel {
+            padding: 10px 10px;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+
+            .question-control-item {
+                width: 30px; 
+                height: 30px;
+                border: 1px solid #7e7e7e;
+                border-radius: 50%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                cursor: pointer;
+
+                &.answered {
+                    background: #ccc;
+                }
+                
+                &.selected {
+                    border: 2px solid #414141;
+                    box-shadow: 0px 0px 8px #00eaff;
+                }
+
+                &:hover {
+                    border: 2px solid red;
+                }
+            }
+        }
+    }   
+
+    .image-container {
+        display: flex;
+        justify-content: center;
+        height: 150px;
+
+        img {
+            height: 100%;
+        }
+    }
+
+    
+}

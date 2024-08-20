@@ -1,0 +1,37 @@
+.home-component{
+    display: flex;
+    align-items: center;
+
+    .intro-textarea {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        padding-right: 50px;
+
+        .intro-title {
+            font-weight: 500;
+            font-size: 60px;
+        }
+
+        .intro-text {
+            font-weight: 400;
+            font-size: 20px;
+        }
+
+        button {
+            margin-top: 10px;
+            width: fit-content;
+            padding: 8px 20px;
+            font-size: 18px;
+            background-color: black;
+            color: white;
+            border-radius: 10px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+
+            &:hover {
+                background-color: white;
+                color: black;
+            }
+        }
+    }
+}

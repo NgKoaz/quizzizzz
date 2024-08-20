@@ -1,0 +1,16 @@
+.uploading-img-container {
+    margin-top: 10px;
+    border: 1px dashed rgb(206, 206, 206);
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    img {
+        height: 100%;
+    }
+
+    span {
+        color: grey;
+    }
+}

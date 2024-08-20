@@ -1,0 +1,59 @@
+
+.update-quiz-area{
+    .upload-image-icon-container {
+        cursor: pointer;
+        transition: opacity 0.5s ease;
+
+        .upload-image-icon {
+            color: rgb(182, 0, 182);
+        }
+
+        &:hover {
+            opacity: 60%;
+        }
+    }
+
+    .answer-action {
+        .add-answer-icon {
+            color: rgb(44, 44, 255);
+            transition: color 0.3s ease-out;
+            cursor: pointer;
+        
+            &:hover {
+                color: rgb(29, 29, 168);
+            }
+        }   
+
+        .remove-answer-icon {
+            color: red;
+            transition: color 0.3s ease-out;
+            cursor: pointer;
+        
+            &:hover {
+                color: rgb(168, 0, 0);
+            }
+        }
+
+    }
+    
+
+    .add-question-icon{
+        color: rgb(44, 44, 255);
+        transition: color 0.3s ease-out;
+        cursor: pointer;
+
+        &:hover {
+            color: rgb(29, 29, 168);
+        }
+    }
+
+    .remove-question-icon {
+        color: orange;
+        transition: color 0.3s ease-out;
+        cursor: pointer;
+
+        &:hover {
+            color: rgb(196, 127, 0);
+        }
+    }
+}

@@ -1,0 +1,13 @@
+.quiz-home-content {
+    overflow-y: scroll;
+    height: calc(100vh - 50px);
+
+    .quiz-container {
+        display: flex;
+        gap: 50px;
+        flex-wrap: wrap;
+        justify-content: center;
+        padding-top: 50px;
+    }
+    
+}
