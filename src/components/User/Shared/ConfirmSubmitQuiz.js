@@ -4,7 +4,6 @@ import Modal from 'react-bootstrap/Modal';
 const ConfirmSubmitQuiz = ({ show, setShow, handleSubmitQuiz }) => {
     const handleClose = () => setShow(false);
 
-
     return (
         <>
             <Modal show={show} onHide={handleClose}>

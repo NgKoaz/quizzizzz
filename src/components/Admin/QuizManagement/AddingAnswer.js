@@ -5,10 +5,7 @@ import { deleteAnswer, postAnswer, putAnswer } from '../../../api/questionApi'
 const AddingAnswer = ({ questionId, answer, updateSelectedQuiz, disableDeleteButton }) => {
     const [isChecked, setIsChecked] = useState(false)
     const [description, setDescription] = useState("")
-    const helo = () => {
-        return description;
-    }
-    console.log("TAO THAY DOI ROI----------------------------", helo(), answer.description)
+
     useEffect(() => {
         if (answer) {
             setIsChecked(answer.isCorrect)
@@ -27,11 +24,6 @@ const AddingAnswer = ({ questionId, answer, updateSelectedQuiz, disableDeleteBut
     }
 
     const onHandleBlur = useCallback(async () => {
-        console.log("answer desc old: ", answer.description)
-        console.log("answer desc new: ", description)
-        console.log("answer check old: ", answer.isCorrect)
-        console.log("answer check new: ", isChecked)
-
         if (answer.description !== description || answer.isCorrect !== isChecked) {
             await putAnswer(questionId, answer.id, description, isChecked)
         }

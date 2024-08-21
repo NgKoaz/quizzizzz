@@ -6,7 +6,6 @@ const ResultModal = ({ show, setShow, corrects, total }) => {
     const handleClose = () => setShow(false);
     const navigate = useNavigate()
 
-
     return (
         <>
             <Modal show={show} onHide={handleClose}>
@@ -22,8 +21,11 @@ const ResultModal = ({ show, setShow, corrects, total }) => {
                     </div>
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button variant="primary" onClick={() => navigate("/user")}>
-                        Close
+                    <Button variant="success" onClick={() => navigate("/user")}>
+                        Back to Quiz
+                    </Button>
+                    <Button variant="primary" onClick={handleClose}>
+                        Preview results
                     </Button>
                 </Modal.Footer>
             </Modal>

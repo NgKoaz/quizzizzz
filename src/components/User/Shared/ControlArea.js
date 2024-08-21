@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { clockString } from '../../../utils/stringUtils'
 
-const ControlArea = ({ handleSubmitQuiz, answer, questionIdList, currentQuestionIndex, setCurrentQuestionIndex }) => {
+const ControlArea = ({ handleSubmitQuiz, answer, questionIdList, currentQuestionIndex, setCurrentQuestionIndex, isSubmitted }) => {
     const [duration, setDuration] = useState(10000)
-    const [submitted, setSubmitted] = useState(false)
 
     const generateClassName = (qId, qIndex) => {
         let c = "question-control-item";
@@ -13,16 +12,15 @@ const ControlArea = ({ handleSubmitQuiz, answer, questionIdList, currentQuestion
     }
 
     useEffect(() => {
-        if (submitted) return;
+        if (isSubmitted) return;
         if (duration === 0) {
-            setSubmitted(true);
             handleSubmitQuiz();
             return;
         }
         setTimeout(() => {
             setDuration(duration && duration - 1)
         }, 1000)
-    }, [duration, handleSubmitQuiz, submitted])
+    }, [duration, handleSubmitQuiz, isSubmitted])
 
     return (
         <>

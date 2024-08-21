@@ -1,4 +1,4 @@
-import { USER_LOGIN, USER_LOGOUT } from "./authTypes"
+import { USER_CHANGE_PROFILE, USER_LOGIN, USER_LOGOUT } from "./authTypes"
 
 export const userLogin = (payload) => {
     return {
@@ -10,5 +10,12 @@ export const userLogin = (payload) => {
 export const userLogout = () => {
     return {
         type: USER_LOGOUT
+    }
+}
+
+export const changeProfile = (payload) => {
+    return {
+        type: USER_CHANGE_PROFILE,
+        payload: payload
     }
 }

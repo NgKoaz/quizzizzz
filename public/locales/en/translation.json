@@ -1,0 +1,40 @@
+{
+    "navbar": {
+        "loginButton": "Login",
+        "registerButton": "Sign up",
+        "adminNavLink": "Admin",
+        "userNavLink": "User",
+        "settingNavLink": {
+            "name": "Setting",
+            "profile": "Profile",
+            "logOut": "Log out"
+        }
+    },
+    "homePage": {
+        "title": "Best creating quiz website!",
+        "description": "Get more data—like signups, feedback, and anything else—with forms designed to be",
+        "description2": "refreshingly different.",
+        "startButton": "Get started - it's free!"
+    },
+    "admin": {
+        "settingNavLink": {
+            "name": "Setting",
+            "profile": "Profile",
+            "logOut": "Log out"
+        },
+        "sidebar": {
+            "dashboard": "Dashboard",
+            "management": {
+                "name": "Management",
+                "user": "User Management",
+                "quiz": "Quiz Management"
+            }
+        },
+        "dashboard": {
+            "totalUser": "Total User",
+            "totalQuiz": "Total Quiz",
+            "totalQuestion": "Total Question",
+            "totalAnswer": "Total Answer"
+        }
+    }
+}

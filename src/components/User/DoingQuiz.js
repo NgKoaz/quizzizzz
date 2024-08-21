@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import "./DoingQuiz.scss"
 import { getQuestionsById, getQuizById, submitQuiz } from '../../api/quizApi';
 import Question from './Shared/Question';
@@ -20,6 +20,10 @@ const DoingQuiz = () => {
     const [showResultModal, setShowResultModal] = useState(false)
     const [corrects, setCorrects] = useState(0)
     const [total, setTotal] = useState(0)
+    const [isSubmitted, setIsSubmitted] = useState(false)
+    const [resultList, setResultList] = useState([])
+
+    const navigate = useNavigate()
 
     const getQuiz = useCallback(async () => {
         const res = await getQuizById(quizId);
@@ -63,11 +67,14 @@ const DoingQuiz = () => {
             }
         })
         const res = await submitQuiz(quizId, answers)
+        console.log(res?.DT?.quizData);
         if (res && res.EC === 0) {
             toast.success(res.EM)
+            setIsSubmitted(true)
             setCorrects(res.DT.countCorrect)
             setTotal(res.DT.countTotal)
             setShowResultModal(true)
+            setResultList(res?.DT?.quizData ?? [])
         } else {
             toast.error(res.EM)
         }
@@ -92,23 +99,40 @@ const DoingQuiz = () => {
                         selectAnswer={selectAnswer}
                         questionList={questionList?.filter(q => q.id === questionIdList?.[currentQuestionIndex])}
                         questionId={questionIdList?.[currentQuestionIndex]}
+                        currentQuestionIndex={currentQuestionIndex}
+                        isSubmitted={isSubmitted}
+                        resultList={resultList}
                     />
 
                     <div className="button-container d-flex justify-content-center">
                         <button
                             className="btn btn-secondary"
+                            disabled={currentQuestionIndex === 0}
                             onClick={() => setCurrentQuestionIndex(currentQuestionIndex && currentQuestionIndex - 1)}>
                             Previous
                         </button>
                         <button
                             className="btn btn-primary mx-3"
-                            onClick={() => setCurrentQuestionIndex((questionIdList.length - 1 <= currentQuestionIndex) ? currentQuestionIndex : currentQuestionIndex + 1)}>
+                            disabled={currentQuestionIndex === questionIdList?.length - 1}
+                            onClick={() => setCurrentQuestionIndex((questionIdList?.length - 1 <= currentQuestionIndex) ? currentQuestionIndex : currentQuestionIndex + 1)}>
                             Next</button>
-                        <button
-                            className="btn btn-warning"
-                            onClick={() => setShowModal(true)}>
-                            Finish
-                        </button>
+
+                        {!isSubmitted &&
+                            <button
+                                className="btn btn-warning"
+                                onClick={() => setShowModal(true)}>
+                                Finish
+                            </button>
+                        }
+
+                        {isSubmitted &&
+                            <button
+                                className="btn btn-success"
+                                onClick={() => navigate("/user")}>
+                                Back to quiz page
+                            </button>
+                        }
+
                     </div>
                 </div>
 
@@ -119,12 +143,14 @@ const DoingQuiz = () => {
                         handleSubmitQuiz={handleSubmitQuiz}
                         currentQuestionIndex={currentQuestionIndex}
                         setCurrentQuestionIndex={setCurrentQuestionIndex}
+                        isSubmitted={isSubmitted}
                     />
                 </div>
             </div>
 
             <ConfirmSubmitQuiz
                 show={showModal} setShow={setShowModal}
+                isSubmitted={isSubmitted}
                 handleSubmitQuiz={handleSubmitQuiz}
             />
 

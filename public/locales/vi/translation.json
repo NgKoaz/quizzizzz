@@ -1,0 +1,40 @@
+{
+    "navbar": {
+        "loginButton": "Đăng nhập",
+        "registerButton": "Đăng kí",
+        "adminNavLink": "Quản trị",
+        "userNavLink": "Người dùng",
+        "settingNavLink": {
+            "name": "Cài đặt",
+            "profile": "Tài khoản",
+            "logOut": "Đăng xuất"
+        }
+    },
+    "homePage": {
+        "title": "Trang web tạo quiz tốt nhất",
+        "description": "Website nhanh mạnh, nói chung là",
+        "description2": "mãi chất thế thôi.",
+        "startButton": "Vô gặp tao"
+    },
+    "admin": {
+        "settingNavLink": {
+            "name": "Cài đặt",
+            "profile": "Tài khoản",
+            "logOut": "Đăng xuất"
+        },
+        "sidebar": {
+            "dashboard": "Bảng điều khiển",
+            "management": {
+                "name": "Quản lí",
+                "user": "Quản lí người dùng",
+                "quiz": "Quản lí Quiz"
+            }
+        },
+        "dashboard": {
+            "totalUser": "Tổng người dùng",
+            "totalQuiz": "Tổng quiz",
+            "totalQuestion": "Tổng câu hỏi",
+            "totalAnswer": "Tổng câu trả lời"
+        }
+    }
+}

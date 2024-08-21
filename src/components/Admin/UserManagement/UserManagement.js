@@ -58,31 +58,33 @@ const UserManagement = () => {
                 <p>Total users: {totalUser}</p>
                 <UserTable userList={userList} handleEditUser={handleEditUser} handleDeleteUser={handleDeleteUser} />
                 <nav aria-label="Page navigation comments" className="mt-4">
-                    <ReactPaginate
-                        previousLabel="previous"
-                        nextLabel="next"
-                        breakLabel="..."
-                        breakClassName="page-item"
-                        breakLinkClassName="page-link"
-                        pageCount={pageCount}
-                        pageRangeDisplayed={3}
-                        marginPagesDisplayed={2}
-                        onPageChange={({ selected }) => setCurrentPage(selected + 1)}
-                        containerClassName="pagination justify-content-center"
-                        pageClassName="page-item"
-                        pageLinkClassName="page-link"
-                        previousClassName="page-item"
-                        previousLinkClassName="page-link"
-                        nextClassName="page-item"
-                        nextLinkClassName="page-link"
-                        activeClassName="active"
-                        // eslint-disable-next-line no-unused-vars
-                        hrefBuilder={(page, pageCount, selected) =>
-                            page >= 1 && page <= pageCount ? `/page/${page}` : '#'
-                        }
-                        hrefAllControls
-                        forcePage={currentPage - 1}
-                    />
+                    {pageCount > 0 &&
+                        <ReactPaginate
+                            previousLabel="previous"
+                            nextLabel="next"
+                            breakLabel="..."
+                            breakClassName="page-item"
+                            breakLinkClassName="page-link"
+                            pageCount={pageCount}
+                            pageRangeDisplayed={3}
+                            marginPagesDisplayed={2}
+                            onPageChange={({ selected }) => setCurrentPage(selected + 1)}
+                            containerClassName="pagination justify-content-center"
+                            pageClassName="page-item"
+                            pageLinkClassName="page-link"
+                            previousClassName="page-item"
+                            previousLinkClassName="page-link"
+                            nextClassName="page-item"
+                            nextLinkClassName="page-link"
+                            activeClassName="active"
+                            // eslint-disable-next-line no-unused-vars
+                            hrefBuilder={(page, pageCount, selected) =>
+                                page >= 1 && page <= pageCount ? `/page/${page}` : '#'
+                            }
+                            hrefAllControls
+                            forcePage={currentPage - 1}
+                        />
+                    }
                 </nav>
 
                 <CreatingModal

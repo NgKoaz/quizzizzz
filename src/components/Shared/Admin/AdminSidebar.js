@@ -8,14 +8,18 @@ import {
     SidebarFooter,
     SidebarContent,
 } from 'react-pro-sidebar';
-import { FaTachometerAlt, FaGem, FaList, FaGithub, } from 'react-icons/fa';
+import { FaTachometerAlt, FaList, FaGithub, } from 'react-icons/fa';
 import sidebarBg from '../../../assets/bg2.jpg';
 import 'react-pro-sidebar/dist/scss/styles.scss';
 import { Link } from 'react-router-dom';
 import "./AdminSidebar.scss";
+import { useTranslation } from 'react-i18next';
 
 
 const AdminSidebar = ({ collapsed, toggled, handleToggleSidebar }) => {
+
+    const { t } = useTranslation()
+
     return (
         <ProSidebar
             image={sidebarBg}
@@ -48,41 +52,14 @@ const AdminSidebar = ({ collapsed, toggled, handleToggleSidebar }) => {
                         icon={<FaTachometerAlt />}
                         suffix={<span className="badge red"></span>}
                     >
-                        Dashboard
+                        <Link to="/admin"></Link>{t("admin.sidebar.dashboard")}
                     </MenuItem>
-                    <MenuItem icon={<FaGem />}>Components</MenuItem>
                 </Menu>
                 <Menu iconShape="circle">
-                    {/* <SubMenu
-                        suffix={<span className="badge yellow">3</span>}
-                        title="withSuffix"
-                        icon={<FaRegLaughWink />}
-                    >
-                        <MenuItem>submenu 1</MenuItem>
-                        <MenuItem>submenu 2</MenuItem>
-                        <MenuItem>submenu 3</MenuItem>
-                    </SubMenu>
-                    <SubMenu
-                        prefix={<span className="badge gray">3</span>}
-                        title="withPrefix"
-                        icon={<FaHeart />}
-                    >
-                        <MenuItem>submenu 1</MenuItem>
-                        <MenuItem>submenu 2</MenuItem>
-                        <MenuItem>submenu 3</MenuItem>
-                    </SubMenu> */}
-                    <SubMenu title="Management" icon={<FaList />}>
-                        <MenuItem><Link to="/admin/user"></Link>User Management</MenuItem>
-                        <MenuItem><Link to="/admin/quiz"></Link>Quiz Management</MenuItem>
-                        {/* <SubMenu title={`$submenu 3`}>
-                            <MenuItem>submenu 3.1 </MenuItem>
-                            <MenuItem>submenu 3.2 </MenuItem>
-                            <SubMenu title={`$submenu 3.3`}>
-                                <MenuItem>submenu 3.3.1 </MenuItem>
-                                <MenuItem>submenu 3.3.2 </MenuItem>
-                                <MenuItem>submenu 3.3.3 </MenuItem>
-                            </SubMenu>
-                        </SubMenu> */}
+                    <SubMenu title={t("admin.sidebar.management.name")} icon={<FaList />}>
+                        <MenuItem><Link to="/admin/user"></Link>{t("admin.sidebar.management.user")}</MenuItem>
+                        <MenuItem><Link to="/admin/quiz"></Link>{t("admin.sidebar.management.quiz")}</MenuItem>
+
                     </SubMenu>
                 </Menu>
             </SidebarContent>

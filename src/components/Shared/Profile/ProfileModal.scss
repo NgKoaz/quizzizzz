@@ -1,0 +1,15 @@
+.profile-modal-preview-container {
+    height: 200px;
+    border: 2px dashed #ccc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    img {
+        height: 100%;
+    }
+
+    span {
+        color: #8f8f8f;
+    }
+}

@@ -1,4 +1,4 @@
-import { USER_LOGIN, USER_LOGOUT } from "../Actions/authTypes"
+import { USER_CHANGE_PROFILE, USER_LOGIN, USER_LOGOUT } from "../Actions/authTypes"
 
 
 const initialState = {
@@ -23,6 +23,15 @@ const authReducer = (state = initialState, action) => {
             }
         case USER_LOGOUT:
             return initialState;
+        case USER_CHANGE_PROFILE:
+            return {
+                account: {
+                    ...state.account,
+                    username: action.payload?.username,
+                    image: action.payload?.image ? action.payload?.image : state.image
+                },
+                isAuth: state.isAuth
+            }
         default:
             return state;
     }

@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import Accordion from 'react-bootstrap/Accordion';
 import "./QuizManagement.scss";
 import AssignQuiz from './AssignQuiz';
 import CreateQuiz from './CreateQuiz';
 import UpdateQuiz from './UpdateQuiz';
 import { getAllQuizzes } from '../../../api/quizApi';
 import { getAllUsers } from '../../../api/userApi';
+import { Tab, Tabs } from 'react-bootstrap';
 
 
 const QuizManagement = () => {
@@ -32,33 +32,30 @@ const QuizManagement = () => {
 
     return (
         <div className="quiz-management-content">
-            <Accordion defaultActiveKey="0">
-                <Accordion.Item eventKey="0">
-                    <Accordion.Header><b>Create a quiz</b></Accordion.Header>
-                    <Accordion.Body>
-                        <CreateQuiz
-                            quizList={quizList}
-                        />
-                    </Accordion.Body>
-                </Accordion.Item>
-                <Accordion.Item eventKey="1">
-                    <Accordion.Header><b>Update a quiz</b></Accordion.Header>
-                    <Accordion.Body>
-                        <UpdateQuiz
-                            quizList={quizList}
-                        />
-                    </Accordion.Body>
-                </Accordion.Item>
-                <Accordion.Item eventKey="2">
-                    <Accordion.Header><b>Assign quiz to user</b></Accordion.Header>
-                    <Accordion.Body>
-                        <AssignQuiz
-                            userList={userList}
-                            quizList={quizList}
-                        />
-                    </Accordion.Body>
-                </Accordion.Item>
-            </Accordion>
+            <Tabs
+                defaultActiveKey="create"
+                id="fill-tab-example"
+                className="mb-3"
+                fill
+            >
+                <Tab eventKey="create" title="Create a quiz">
+                    <CreateQuiz
+                        getQuizList={getQuizList}
+                        quizList={quizList}
+                    />
+                </Tab>
+                <Tab eventKey="update" title="Update a quiz">
+                    <UpdateQuiz
+                        quizList={quizList}
+                    />
+                </Tab>
+                <Tab eventKey="assign" title="Assign quiz to user">
+                    <AssignQuiz
+                        userList={userList}
+                        quizList={quizList}
+                    />
+                </Tab>
+            </Tabs>
         </div>
     )
 }

@@ -1,15 +1,24 @@
 import React from 'react'
 import { PhotoProvider, PhotoView } from 'react-photo-view';
 import { base64ToBlobUrl } from "../../../utils/fileProcessing"
+import { deleteQuiz } from '../../../api/quizApi';
+import { toast } from 'react-toastify';
 
-const QuizTable = ({ quizList }) => {
+const QuizTable = ({ getQuizList, quizList, setUpdatedQuizId }) => {
 
     const handleEditQuiz = (quiz) => {
-        console.log(quiz)
+        setUpdatedQuizId(quiz.id)
     }
 
-    const handleDeleteQuiz = (quiz) => {
-        console.log(quiz)
+    const handleDeleteQuiz = async (quiz) => {
+        console.log(quiz.id)
+        const res = await deleteQuiz(quiz.id);
+        if (res && res.EC === 0) {
+            toast.success(res.EM)
+            getQuizList()
+        } else {
+            toast.error(res.EM)
+        }
     }
 
     return (

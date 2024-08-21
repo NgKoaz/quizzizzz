@@ -11,6 +11,7 @@ import Navless from './Layout/Navless.js'
 import Login from './Auth/Login.js'
 import Register from './Auth/Register.js'
 import DoingQuiz from './User/DoingQuiz.js'
+import AuthRoute from './routes/AuthRoute.js'
 
 const PageRoute = () => {
     return (
@@ -19,13 +20,25 @@ const PageRoute = () => {
                 <Route index element={<Home />} />
                 <Route path="login" element={<Login />} />
                 <Route path="register" element={<Register />} />
-                <Route path='user' element={<QuizHome />} />
+                <Route path='user' element={
+                    <AuthRoute>
+                        <QuizHome />
+                    </AuthRoute>
+                } />
                 <Route path="quiz">
-                    <Route path=":id" element={<DoingQuiz />} />
+                    <Route path=":id" element={
+                        <AuthRoute>
+                            <DoingQuiz />
+                        </AuthRoute>
+                    } />
                 </Route>
             </Route>
 
-            <Route path="/admin" element={<AdminLayout />}>
+            <Route path="/admin" element={
+                <AuthRoute>
+                    <AdminLayout />
+                </AuthRoute>
+            }>
                 <Route index element={<AdminHome />} />
                 <Route path="user" element={<UserManagement />} />
                 <Route path="quiz" element={<QuizManagement />} />

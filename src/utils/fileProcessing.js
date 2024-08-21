@@ -17,3 +17,16 @@ export const base64ToBlobUrl = (base64String) => {
 
     return blobUrl;
 }
+
+
+export const convertImageToBase64 = (imageFile) => {
+    return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onloadend = () => {
+            resolve(reader.result);
+        };
+        reader.onerror = reject;
+        reader.readAsDataURL(imageFile);
+    });
+}
+

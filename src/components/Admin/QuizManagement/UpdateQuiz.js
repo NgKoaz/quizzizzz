@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useState } from 'react'
 import FormSelectCustom from './FormSelectCustom'
 import "./UpdateQuiz.scss"
-import { getQuestionWithAnswer } from '../../../api/questionApi';
+import { getQuestionWithAnswer, postAnswer, postQuestion } from '../../../api/questionApi';
 import { toast } from 'react-toastify';
 import AddingQuestion from './AddingQuestion';
 
@@ -10,16 +10,44 @@ const UpdateQuiz = ({ quizList }) => {
     const [questionList, setQuestionList] = useState([])
     const [selectedQuizId, setSelectedQuizId] = useState(0)
 
+    const createFirstQuestion = async (quizId, aQuestion) => {
+        if (aQuestion.length === 0) {
+            const res = await postQuestion(quizId, " ", null)
+            const resAns = await postAnswer(res?.DT.id, " ", false)
+            console.log(res, resAns)
+            const qData = res.DT;
+            const aData = resAns.DT;
+            return [
+                {
+                    id: qData?.id,
+                    description: qData?.description,
+                    imageFile: '',
+                    imageName: '',
+                    answers: [
+                        {
+                            id: aData?.id,
+                            description: aData?.description,
+                            isCorrect: aData?.correct_answer
+                        }
+                    ]
+                }
+            ]
+        }
+        return aQuestion;
+    }
+
     const updateSelectedQuiz = useCallback(async () => {
         if (selectedQuizId === 0) return;
 
         const res = await getQuestionWithAnswer(selectedQuizId)
+        console.log(res)
         if (!(res && res.EC === 0)) {
             toast.error(res.EM)
         }
         if (+res?.DT?.quizId === selectedQuizId) {
             console.log("Get quiz successful!")
-            setQuestionList(res.DT.qa.sort((o1, o2) => o1.id - o2.id))
+            const arrayQuestion = await createFirstQuestion(res.DT.quizId, res.DT.qa)
+            setQuestionList(arrayQuestion.sort((o1, o2) => o1.id - o2.id))
         } else {
             toast.error(res?.EM)
         }
